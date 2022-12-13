@@ -1,0 +1,83 @@
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.btn {
+    width: 200px;
+    background-color: #FF5A30;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    border: 1px solid #FF5A30;
+    border-radius: 4px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.box {
+    background-color: #fff;
+    max-width: 486px;
+    width: 100%;
+    height: 412px;
+    top: 0;
+    box-shadow: 0px 60px 80px -20px rgba(30, 33, 44, 0.16), 0px 26px 24px -10px rgba(30, 33, 44, 0.1), 0px 12px 10px -6px rgba(30, 33, 44, 0.08), 0px 4px 4px -4px rgba(30, 33, 44, 0.05);
+    border-radius: 4px;
+}
+
+.box .fa-xmark {
+    color: #787A80;
+    background-color: white;
+    border: none;
+    font-size: 24px;
+}
+
+.xmark-btn {
+    background-color: white;
+    border: none;
+    text-align: left;
+}
+
+.box_header {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.box_body__title {
+    margin-top: 4px;
+    text-align: center;
+}
+
+.form {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.input-email,
+.input-password {
+    background-color: #F4F5F6;
+    color: #9A9CA5;
+    width: 390px;
+    margin-top: 20px;
+    height: 44px;
+    border: 1px solid #D7DADD;
+    border-radius: 4px;
+    padding-left: 16px;
+}
+
+.submit{
+    margin-top: 20px;
+}
