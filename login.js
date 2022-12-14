@@ -42,7 +42,7 @@ form.addEventListener("submit", function (e) {
             window.localStorage.setItem("token", data.token)
             window.location.replace('exchange.html')
         }else{
-            alert("parol yoki user hato")
+            alert("parol yoki user xato")
         }
     })
 

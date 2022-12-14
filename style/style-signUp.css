@@ -81,3 +81,23 @@
 .submit{
     margin-top: 20px;
 }
+
+@media screen and (max-width:420px) {
+    
+    .input-email , .input-password{
+        width: 90%;
+        
+    }
+
+    .btn{
+        max-width: 180px;
+        font-size: 18px;
+    }    
+
+    .box_body__title{
+        max-width: 200px;
+        text-align: center;
+        margin: 0 auto;
+    }    
+
+}
