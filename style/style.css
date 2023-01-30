@@ -118,6 +118,7 @@ ul li {
     overflow: hidden;
   }
   /* Arrow */
+  /*  */
   .select::after {
     content: '\25BC';
     position: absolute;
