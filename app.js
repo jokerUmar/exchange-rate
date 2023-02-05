@@ -6,7 +6,7 @@ const xmark = document.querySelector(".fa-xmark")
 const bars = document.querySelector(".fa-bars")
 const logout = document.querySelector(".logout")
 
-let objData ={}
+let objData = {}
 
 bars.addEventListener("click", function (e) {
     xmark.style.visibility = "visible"
@@ -30,53 +30,68 @@ logout.addEventListener("click", function (e) {
 
 
 let selectBox = document.querySelector(".select-box")
-
-
+let select_to_box = document.querySelector(".select-to_box")
+let rate_value = 0
+let rate_left_country_name = false
 
 // ----- API ----- 
 
-let base;
 
-function data() {
-    fetch(`https://api.exchangerate.host/latest?base=${base ? base : 'EUR'}`)
+function dataAPI(item) {
+    fetch(`https://api.exchangerate.host/latest?base=${item ? item : 'EUR'}`)
         .then(response => response.json())
         .then(data => {
-            renderingRate(data , selectBox)
+            renderingRate(data, selectBox)
         })
         .catch(err => console.log("xatolik", err))
 }
 
-data()
+dataAPI()
 
 
 // rendering rate
 
+let rate_left = document.querySelector(".rate-left")
 
 function renderingRate(data, htmlElement) {
 
-    console.log(data);
-
-    for(let key in data.rates ){
-
+    for (let key in data.rates) {
         let option = document.createElement("option")
         option.textContent = key
-        option.setAttribute("class" , "valyuta")
-        option.setAttribute("value" , key)
-        htmlElement.appendChild(option)    
-    }    
+        option.setAttribute("class", "valyuta")
+        option.setAttribute("value", key)
+        htmlElement.appendChild(option)
+    }
 
-    htmlElement.addEventListener("change" , function(e){
-        objData = e.target.value
-        optionValue(objData)
+
+    selectBox.addEventListener("change", function (e) {
+        dataAPI(e.target.value)
+        if(rate_value > 0){
+            renderingRateRight(data, select_to_box, rate_value)
+            document.querySelector(".rate-right").textContent = data.rates[rate_left_country_name] * rate_value + " " + e.target.value
+            console.log(rate_value);
+        }
     })
-    
+
+    rate_left.addEventListener("change", function (e) {
+        e.preventDefault()
+        rate_value = e.target.value
+        renderingRateRight(data, select_to_box, rate_value)
+    })
 }
 
-function optionValue(optionData) {
-    base = optionData
-    return base
+function renderingRateRight(data, htmlElement, moneyValue) {
+    for (let key in data.rates) {
+        let option = document.createElement("option")
+        option.textContent = key
+        option.setAttribute("class", "valyuta")
+        option.setAttribute("value", key)
+        htmlElement.appendChild(option)
+    }   
+
+    htmlElement.addEventListener("change", function (e) {
+        rate_left_country_name = e.target.value
+        document.querySelector(".rate-right").textContent = data.rates[rate_left_country_name] * moneyValue + " " + e.target.value
+    })  
 }
-
-
-
 
